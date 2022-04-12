@@ -1,0 +1,15 @@
+from chessdotcom import get_leaderboards
+import pprint
+
+printer = pprint.PrettyPrinter()
+
+def print_leaderboard():
+    data = get_leaderboards().json
+    categories = data.keys()
+
+    for category in categories:
+        print('Category: ', category)
+        for idx, entry in enumerate(data[category]):
+            print(f'Rank: {idx+1} | Username: {entry["username"]} | Rating: {entry["score"]}')
+
+print_leaderboard()
